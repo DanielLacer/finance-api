@@ -1,0 +1,16 @@
+CREATE TABLE categories (
+  id BIGINT IDENTITY(1,1) PRIMARY KEY,
+  name NVARCHAR(100) NOT NULL UNIQUE,
+  created_at DATETIME2 NOT NULL DEFAULT SYSDATETIME()
+);
+
+CREATE TABLE transactions (
+  id BIGINT IDENTITY(1,1) PRIMARY KEY,
+  type NVARCHAR(10) NOT NULL, -- INCOME or EXPENSE
+  amount DECIMAL(19,2) NOT NULL,
+  description NVARCHAR(255) NULL,
+  date DATE NOT NULL,
+  category_id BIGINT NOT NULL,
+  created_at DATETIME2 NOT NULL DEFAULT SYSDATETIME(),
+  CONSTRAINT fk_transactions_category FOREIGN KEY (category_id) REFERENCES categories(id)
+);
