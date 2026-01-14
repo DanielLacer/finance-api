@@ -29,3 +29,11 @@ logging:
   level:
     org.flywaydb: DEBUG
     org.springframework.boot.autoconfigure.flyway: DEBUG
+
+app:
+  security:
+    jwt:
+      issuer: "finance-app"
+      access-token-minutes: 15
+      refresh-token-days: 30
+      secret: "TROQUE-ISSO-POR-UMA-SECRET-FORTE-32+CHARS"
